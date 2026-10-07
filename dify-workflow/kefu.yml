@@ -1,0 +1,1808 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 客服改
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.61@f0952b183715405503a23ccef015e5d43948591fd10b60690f24c07873eed723
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.24@9e12eef09973667f0eaf4f082af883167e1de88740b22e71e71488d020c3778a
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 3f685c9e-9bc1-4380-8af6-9f75103819c4
+    name: tool_retry
+    selector:
+    - conversation
+    - tool_retry
+    value: 0
+    value_type: integer
+  - description: ''
+    id: 9f6cc41c-74bb-45af-83ca-98db7598e451
+    name: is_turn_human
+    selector:
+    - conversation
+    - is_turn_human
+    value: false
+    value_type: boolean
+  - description: ''
+    id: 55ba2951-cfb7-4368-85c7-42578bc13123
+    name: clarification_round
+    selector:
+    - conversation
+    - clarification_round
+    value: 0
+    value_type: integer
+  environment_variables: []
+  features:
+    file_upload: {}
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: start
+        targetType: assigner
+      id: 1789562177817-source-1789563091120-target
+      selected: false
+      source: '1789562177817'
+      sourceHandle: source
+      target: '1789563091120'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: assigner
+        targetType: llm
+      id: 1789563091120-source-1789563120831-target
+      selected: false
+      source: '1789563091120'
+      sourceHandle: source
+      target: '1789563120831'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: answer
+      id: 1789563096751-1a64ea90-7fc4-4b17-b4c0-9377f61bd8b8-1790779672607-target
+      source: '1789563096751'
+      sourceHandle: 1a64ea90-7fc4-4b17-b4c0-9377f61bd8b8
+      target: '1790779672607'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1789563096751-7909403a-30d1-4d96-9de8-34b823f83b2b-1789721830758-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 7909403a-30d1-4d96-9de8-34b823f83b2b
+      target: '1789721830758'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1789563096751-86791cac-a086-4fe1-ba9b-6e4f1bd533c3-1789721888126-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 86791cac-a086-4fe1-ba9b-6e4f1bd533c3
+      target: '1789721888126'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1789563096751-af20065e-c56d-428c-b3dc-6fdbff2bf91b-1789721909565-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: af20065e-c56d-428c-b3dc-6fdbff2bf91b
+      target: '1789721909565'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1789563096751-true-1789565160296-target
+      selected: false
+      source: '1789563096751'
+      sourceHandle: 'true'
+      target: '1789565160296'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: if-else
+      id: 1789563120831-source-1789563096751-target
+      selected: false
+      source: '1789563120831'
+      sourceHandle: source
+      target: '1789563096751'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1-1789565168207-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1'
+      target: '1789565168207'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1789721752557-1789750948580-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1789721752557'
+      target: '1789750948580'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-1789721753766-1789750031893-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '1789721753766'
+      target: '1789750031893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1789565160296-2-1789721897270-target
+      selected: false
+      source: '1789565160296'
+      sourceHandle: '2'
+      target: '1789721897270'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: parameter-extractor
+      id: 1789565168207-source-1789721994438-target
+      selected: false
+      source: '1789565168207'
+      sourceHandle: source
+      target: '1789721994438'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721830758-source-1789736239602-target
+      selected: false
+      source: '1789721830758'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789721888126-source-1789721929703-target
+      selected: false
+      source: '1789721888126'
+      sourceHandle: source
+      target: '1789721929703'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: parameter-extractor
+      id: 1789721897270-source-1790773251927-target
+      selected: false
+      source: '1789721897270'
+      sourceHandle: source
+      target: '1790773251927'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789721909565-source-1789721925966-target
+      selected: false
+      source: '1789721909565'
+      sourceHandle: source
+      target: '1789721925966'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721922630-source-1789736239602-target
+      selected: false
+      source: '1789721922630'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721925966-source-1789736239602-target
+      selected: false
+      source: '1789721925966'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789721929703-source-1789736239602-target
+      selected: false
+      source: '1789721929703'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1789721994438-source-1789731455298-target
+      selected: false
+      source: '1789721994438'
+      sourceHandle: source
+      target: '1789731455298'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: tool
+        targetType: llm
+      id: 1789731455298-source-1789731569091-target
+      selected: false
+      source: '1789731455298'
+      sourceHandle: source
+      target: '1789731569091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789731569091-source-1789736239602-target
+      selected: false
+      source: '1789731569091'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: tool
+        targetType: llm
+      id: 1789731640234-source-1789731645578-target
+      selected: false
+      source: '1789731640234'
+      sourceHandle: source
+      target: '1789731645578'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789731645578-source-1789736239602-target
+      selected: false
+      source: '1789731645578'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1789735390944-source-1789736239602-target
+      selected: false
+      source: '1789735390944'
+      sourceHandle: source
+      target: '1789736239602'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1789736239602-source-1789736501096-target
+      selected: false
+      source: '1789736239602'
+      sourceHandle: source
+      target: '1789736501096'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789750031893-source-1789721922630-target
+      selected: false
+      source: '1789750031893'
+      sourceHandle: source
+      target: '1789721922630'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1789750948580-source-1789735390944-target
+      selected: false
+      source: '1789750948580'
+      sourceHandle: source
+      target: '1789735390944'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1790773251927-source-1789731640234-target
+      selected: false
+      source: '1790773251927'
+      sourceHandle: source
+      target: '1789731640234'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 73
+      id: '1789562177817'
+      position:
+        x: 37.54005732185334
+        y: 73.52791966007108
+      positionAbsolute:
+        x: 37.54005732185334
+        y: 73.52791966007108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        items:
+        - input_type: constant
+          operation: set
+          value: 0
+          variable_selector:
+          - conversation
+          - clarification_round
+        - input_type: constant
+          operation: set
+          value: 0
+          variable_selector:
+          - conversation
+          - tool_retry
+        - input_type: constant
+          operation: set
+          value: false
+          variable_selector:
+          - conversation
+          - is_turn_human
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 136
+      id: '1789563091120'
+      position:
+        x: 324.96397520890804
+        y: 94.52791966007108
+      positionAbsolute:
+        x: 324.96397520890804
+        y: 94.52791966007108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 71aa6091-5fa1-43e9-911d-53438d9d5c09
+            value: consulting
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 86791cac-a086-4fe1-ba9b-6e4f1bd533c3
+          conditions:
+          - comparison_operator: contains
+            id: 27cf2ee7-3fae-4b97-b1f3-2348141850ed
+            value: complaint
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: af20065e-c56d-428c-b3dc-6fdbff2bf91b
+          conditions:
+          - comparison_operator: contains
+            id: 5fd4b0a7-90a6-4ba6-b632-4b90afd17291
+            value: tech_support
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 7909403a-30d1-4d96-9de8-34b823f83b2b
+          conditions:
+          - comparison_operator: contains
+            id: 0b23e522-b2b2-4660-a016-5f1c254c658b
+            value: chitchat
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        - case_id: 1a64ea90-7fc4-4b17-b4c0-9377f61bd8b8
+          conditions:
+          - comparison_operator: contains
+            id: dd8c4bcc-272a-49b6-8fb0-e67386793491
+            value: unknown
+            varType: string
+            variable_selector:
+            - '1789563120831'
+            - text
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 388
+      id: '1789563096751'
+      position:
+        x: 949.391971705579
+        y: -2.4559117817365426
+      positionAbsolute:
+        x: 949.391971705579
+        y: -2.4559117817365426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory: null
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V4-Flash
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 5f550c92-c463-4467-9bbe-0d0ea7fe0daf
+          role: system
+          text: '你是一个精确的电商客服对话意图分类器。你需要结合对话历史来判断用户当前输入的意图。
+
+            严格将用户问题分为以下5类：
+
+            1. consulting：与店铺业务相关的咨询，包括产品参数/价格/库存、物流查询、退换货政策、保修规则、发票、促销活动、会员福利、会员积分等。注意：询问政策规则（如"拆封了能退吗""保修多久""质量问题运费谁出"）属于consulting，不是complaint。
+
+            2. complaint：投诉类（商品问题、物流投诉、体验不满、索赔退换）关键词：坏了、坏了怎么换、换货、退货、售后、投诉、质量问题、故障、维修、坏、换。
+
+
+            3. tech_support：技术支持类（产品使用、故障排查、维修指引），如"开不了机""蓝屏怎么办""连不上WiFi"
+
+            4. chitchat：闲聊类（打招呼、问候、客套话、无业务内容）
+
+            5. unknown：无法识别、信息严重不足，与数码店铺完全无关的请求（如"帮我订个外卖""讲个笑话""今天天气怎么样"），或语义不完整、无法理解的模糊表达（如"我想咨询一下""在吗"但没有具体问题）。
+
+             
+
+            输出规则：只输出一个单词（consulting /complaint/ tech_support/ chitchat / unknown），不要输出任何其他文字、markdown、代码块、备注。不确定时优先归为unknown'
+        - id: 0c38acb3-df9a-40ad-80f3-e203254a0b53
+          role: user
+          text: '{{#sys.query#}}{{#sys.files#}}'
+        - id: 680b6d9b-e79a-433e-aa40-b4ce72b62f2d
+          role: assistant
+          text: ''
+        selected: false
+        title: 问题分类
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789563120831'
+      position:
+        x: 631.6369481951662
+        y: 94.52791966007108
+      positionAbsolute:
+        x: 631.6369481951662
+        y: 94.52791966007108
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        classes:
+        - id: '1'
+          label: CLASS 1
+          name: 产品咨询-关键词：多少钱, 配置, 颜色, 介绍, iPhone, 显卡，硬盘，华为，小米，产品信息，库存，有没有货
+        - id: '2'
+          label: CLASS 2
+          name: 物流咨询
+        - id: '1789721752557'
+          label: CLASS 3
+          name: 店铺政策咨询：询问退换货规则、保修政策、售后流程、发票、配送政策、付款方式等店铺规则。例如：拆封了能退吗？保修多久？发票怎么开？
+        - id: '1789721753766'
+          label: CLASS 4
+          name: 促销活动咨询：询问优惠活动、折扣、优惠券、满减、会员福利、VIP权益、积分、生日优惠、赠品等。例如：618有什么活动？新会员有什么福利？积分能干嘛？
+        instruction: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V4-Flash
+          provider: langgenius/siliconflow/siliconflow
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 262
+      id: '1789565160296'
+      position:
+        x: 1286.187882140939
+        y: -263.1658953744304
+      positionAbsolute:
+        x: 1286.187882140939
+        y: -263.1658953744304
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: null
+          top_k: 4
+          weights: null
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 90
+      id: '1789565168207'
+      position:
+        x: 1734.3498829271405
+        y: -299.3598066532686
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -299.3598066532686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 126ea421-550c-4cbf-85e2-92fd7d9435b4
+          role: system
+          text: '你是hp数码店的亲切客服。当客户闲聊时，你需要根据用户的询问内容进行回答：
+
+            {{#context#}}
+
+            1. 友好、亲切地回应客户的问候和闲聊
+
+            2. 展现出客服的人格化设定，让客户感受到温暖
+
+            3. 适时引导客户回到业务场景，比如："有什么我可以帮您的吗？"
+
+            4. 不要聊与数码产品无关的话题
+
+            5. 语气要自然、不生硬，像朋友一样聊天
+
+
+            记住：闲聊是为了拉近距离，最终目的是引导客户了解我们的产品和服务。'
+        selected: false
+        title: 闲聊回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721830758'
+      position:
+        x: 2043.449561355958
+        y: 465.10582305527834
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 465.10582305527834
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: 0.48
+          top_k: 7
+          weights: null
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 2
+        type: knowledge-retrieval
+      height: 90
+      id: '1789721888126'
+      position:
+        x: 1734.3498829271405
+        y: 207.7747519589285
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 207.7747519589285
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: null
+          top_k: 4
+          weights: null
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 3
+        type: knowledge-retrieval
+      height: 90
+      id: '1789721897270'
+      position:
+        x: 1734.3498829271405
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -157.08458107092198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: null
+          top_k: 4
+          weights: null
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789562177817'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 4
+        type: knowledge-retrieval
+      height: 90
+      id: '1789721909565'
+      position:
+        x: 1734.3498829271405
+        y: 329.4497608364019
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 329.4497608364019
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789750031893'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - edition_type: basic
+          id: d5400bd3-dc42-4797-8459-3ceb05a259e4
+          role: system
+          text: '你是hp数码店的智能客服，请根据以下知识库信息回答用户关于促销活动的问题：
+
+
+            【促销活动知识库】
+
+            {{#context#}}/
+
+
+            【回答规则】
+
+            1. 根据知识库中的促销活动信息，友好地回答用户关于活动时间、优惠力度、参与方式等问题
+
+            2. 回答要清晰、准确，突出活动的优惠亮点
+
+            3. 回答要友好、专业、有吸引力，引导用户参与活动
+
+            4. 如果知识库中没有相关信息，礼貌地告知用户并建议关注店铺后续活动
+
+            5. 不要编造活动信息或虚假优惠
+
+            '
+        - id: c8a0c464-18b4-436e-aba2-62ce6850c5d4
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 促销活动回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721922630'
+      position:
+        x: 2043.449561355958
+        y: 85.07243272850214
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 85.07243272850214
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721909565'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 1bf79e65-b1ef-4a3b-bae6-7cce348121d1
+          role: system
+          text: '你是hp数码店的技术支持工程师。当客户遇到产品技术问题时，你需要：
+
+
+            【维修手册知识库】
+
+            {{#context#}}
+
+            【回答规则】
+
+            1. 首先确认客户遇到的具体故障现象
+
+            2. 基于知识库检索到的维修手册，一步步指导客户排查和解决问题
+
+            3. 指令要清晰、有条理，一步一步来，不要一次性给太多步骤
+
+            4. 如果问题比较复杂，可以建议客户联系售后维修
+
+            5. 语气要专业、耐心，让客户觉得你在认真帮他解决问题
+
+            6. 记住：技术问题需要精准的指导，不要给模糊的建议
+
+            '
+        - id: 9ef9a08a-3ac7-4e10-9b42-3e3d597e3722
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 技术支持回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721925966'
+      position:
+        x: 2043.449561355958
+        y: 329.4497608364019
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 329.4497608364019
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721888126'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: db650fac-72a5-48a3-8757-140f91625414
+          role: system
+          text: '你是hp数码店的专业客服。当客户投诉时，你需要：
+
+            根据知识库以及客户的问题进行回答
+
+            {{#context#}}{{#sys.query#}}
+
+            1. 首先表达理解和歉意，安抚客户情绪
+
+            2. 仅根据知识库中提供的内容给出解决方案，绝对不要编造知识库中没有的政策或承诺。
+
+            3. 如果客户的问题超出你的处理范围，记录问题并告知会转人工处理
+
+            4. 语气要真诚、有同理心，不要敷衍了事
+
+            5. 不要承诺超出政策范围的事情。
+
+            6. 如果知识库中没有相关内容，告知用户需要转接人工客服处理，不要自行编造解决方案
+
+            7. 如果知识库中有相关的退换货/保修政策，引用政策内容告知用户如何处理
+
+            记住：客户的情绪比问题本身更重要。先安抚情绪，再解决问题。'
+        - id: 4e4d7bfe-99b9-4b4f-96d9-4bfbbbb1f9fe
+          role: user
+          text: '{{#sys.query#}}/'
+        selected: false
+        title: 投诉回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721929703'
+      position:
+        x: 2043.449561355958
+        y: 207.7747519589285
+      positionAbsolute:
+        x: 2043.449561355958
+        y: 207.7747519589285
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        instruction: '你是一个电商客服助手。请从用户的问题中提取出用户咨询的商品名称。
+
+          /
+
+          规则：
+
+          1. 如果用户明确提到了具体的商品名称或型号，直接提取该商品名称
+
+          2. 如果用户提到了多个商品，提取最主要咨询的那个
+
+          3. 如果用户没有提到具体商品，输出"未知"
+
+          4. 只输出提取到的商品名称，不要输出任何解释、标点或多余内容
+
+
+          示例：
+
+          用户：星耀X15现在有货吗？
+
+          输出：星耀 X15
+
+
+          用户：我想看看降噪耳机Pro 2
+
+          输出：静语降噪耳机 Pro 2
+
+
+          用户：显卡推荐
+
+          输出：未知/'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 用户咨询的商品名称
+          name: product_name
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: 商品信息提取
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1789721994438'
+      position:
+        x: 2043.449561355958
+        y: -299.3598066532686
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -299.3598066532686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        is_team_authorization: true
+        meta: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          input_schema: null
+          label:
+            en_US: product_name
+            ja_JP: product_name
+            pt_BR: product_name
+            zh_Hans: product_name
+          llm_description: ''
+          max: null
+          min: null
+          multiple: false
+          name: product_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          product_name: ''
+        plugin_id: ''
+        plugin_unique_identifier: ''
+        provider_icon:
+          background: ''
+          content: 🔗
+        provider_icon_dark: null
+        provider_id: stock
+        provider_name: stock
+        provider_show_name: stock
+        provider_type: mcp
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: query_stock
+        tool_configurations: {}
+        tool_description: 根据商品名称查询库存、价格、发货信息
+        tool_label: query_stock
+        tool_name: query_stock
+        tool_node_version: '2'
+        tool_parameters:
+          product_name:
+            type: mixed
+            value: '{{#1789721994438.product_name#}}'
+        type: tool
+      height: 115
+      id: '1789731455298'
+      position:
+        x: 2432.986944700065
+        y: -299.3598066532686
+      positionAbsolute:
+        x: 2432.986944700065
+        y: -299.3598066532686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789565168207'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: f68000c7-df5f-4c1e-afb2-9b374ac55a23
+          role: system
+          text: '你是hp数码店的智能客服，请根据以下信息回答用户的问题：
+
+            【产品知识库信息】
+
+            {{#context#}}
+
+            【库存查询结果】
+
+            {{#1789731455298.text#}}{{#1789731455298.result#}}
+
+            【回答规则】 1. 首先根据产品知识库信息回答用户的产品咨询问题 2. 如果用户询问库存、有没有货、是否在售等问题，结合库存查询结果回答 3.
+            如果用户没有询问库存，就只回答产品相关的信息，不要主动提及库存 4. 回答要友好、专业、简洁，符合电商客服的语气 5. 如果知识库中没有相关信息，礼貌地告知用户并建议联系人工客服
+            6. 不要编造产品信息或库存数据'
+        - id: f4fcb4cf-2bb6-4db0-88a7-ddc79b749b8b
+          role: user
+          text: '{{{#sys.query#}}'
+        selected: false
+        title: 产品咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789731569091'
+      position:
+        x: 2734.0801628273957
+        y: -299.3598066532686
+      positionAbsolute:
+        x: 2734.0801628273957
+        y: -299.3598066532686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        is_team_authorization: true
+        meta: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          input_schema: null
+          label:
+            en_US: order_number
+            ja_JP: order_number
+            pt_BR: order_number
+            zh_Hans: order_number
+          llm_description: ''
+          max: null
+          min: null
+          multiple: false
+          name: order_number
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          order_number: ''
+        plugin_id: ''
+        plugin_unique_identifier: ''
+        provider_icon:
+          background: '#6366F1'
+          content: 🔗
+        provider_icon_dark: null
+        provider_id: logistics
+        provider_name: logistics
+        provider_show_name: logistics
+        provider_type: mcp
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: query_logistics
+        tool_configurations: {}
+        tool_description: 根据订单号查询物流状态、位置和配送进度
+        tool_label: query_logistics
+        tool_name: query_logistics
+        tool_node_version: '2'
+        tool_parameters:
+          order_number:
+            type: mixed
+            value: '{{#1790773251927.order_number#}}'
+        type: tool
+      height: 115
+      id: '1789731640234'
+      position:
+        x: 2432.986944700065
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 2432.986944700065
+        y: -157.08458107092198
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789721897270'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: fc1a5b3e-8322-4270-8f85-c7c4c3b8c3b7
+          role: system
+          text: '你是hp数码店的智能客服，请根据以下信息回答用户的问题：
+
+            【知识库】
+
+            {{#context#}}/
+
+
+            【物流查询结果2】
+
+            {{#1789731640234.text#}}
+
+
+            【回答规则1. 首先根据物流查询结果1物/流查询结果2，友好地告知用户当前的物流状态
+
+            2. 如果用户同时询问了产品相关问题（如产品参数、价格、功能等），请结合你的知识库知识一并回答
+
+            3. 如果用户只询问了物流问题，就只回答物流相关的信息
+
+            4. 如果订单号未找到，礼貌地告知用户并建议联系人工客服
+
+            5. 回答要友好、专业、简洁，符合电商客服的语气
+
+            6. 不要编造物流信息或产品信息
+
+            '
+        - id: 0f173a74-7f93-4a6f-b4a7-633968841265
+          role: user
+          text: '{{#sys.query#}}/'
+        - id: 691737bc-30d4-491f-a3d7-15e78a1c0d0a
+          role: assistant
+          text: /
+        selected: false
+        title: 物流咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789731645578'
+      position:
+        x: 2734.0801628273957
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 2734.0801628273957
+        y: -157.08458107092198
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1789750948580'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        model_selector: null
+        prompt_template:
+        - id: 7a404812-4ca7-4669-ab27-7b8fafa0d6f8
+          role: system
+          text: '你是hp数码店的智能客服，请根据以下知识库信息回答用户关于店铺政策的问题：
+
+
+            【店铺政策知识库】
+
+            {{#context#}}
+
+
+            【回答规则】
+
+            1. 根据知识库中的店铺政策信息，友好地回答用户关于退换货、售后、保修等政策问题
+
+            2. 回答要清晰、准确，不要遗漏重要信息
+
+            3. 回答要友好、专业、简洁，符合电商客服的语气
+
+            4. 如果知识库中没有相关信息，礼貌地告知用户并建议联系人工客服
+
+            5. 不要编造政策内容
+
+            '
+        - id: 89a84c2d-634e-4859-81a1-c7b006c8911b
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 店铺政策咨询回答
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1789735390944'
+      position:
+        x: 2043.449561355958
+        y: -35.43029366369062
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -35.43029366369062
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1789731645578'
+          - text
+        - - '1789731569091'
+          - text
+        - - '1789735390944'
+          - text
+        - - '1789721922630'
+          - text
+        - - '1789721925966'
+          - text
+        - - '1789721830758'
+          - text
+        - - '1789721929703'
+          - text
+      height: 265
+      id: '1789736239602'
+      position:
+        x: 3068.3151128415275
+        y: 76.71456286463702
+      positionAbsolute:
+        x: 3068.3151128415275
+        y: 76.71456286463702
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        answer: '{{#1789736239602.output#}}'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 103
+      id: '1789736501096'
+      position:
+        x: 3411.4367440007177
+        y: 76.71456286463702
+      positionAbsolute:
+        x: 3411.4367440007177
+        y: 76.71456286463702
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: Qwen/Qwen3-Reranker-4B
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: 0.32
+          top_k: 9
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: BAAI/bge-large-zh-v1.5
+              embedding_provider_name: langgenius/siliconflow/siliconflow
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 6
+        type: knowledge-retrieval
+      height: 90
+      id: '1789750031893'
+      position:
+        x: 1734.3498829271405
+        y: 85.07243272850214
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: 85.07243272850214
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 2dPGxb7CtELANTZ/69pIITN9FGlm7PKEDobu6Zxn+Z/5bsQeShJIVwPr9uahZ3v9
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          score_threshold: 0.33
+          top_k: 7
+          weights: null
+        query_attachment_selector: []
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 6
+        type: knowledge-retrieval
+      height: 90
+      id: '1789750948580'
+      position:
+        x: 1734.3498829271405
+        y: -35.43029366369062
+      positionAbsolute:
+        x: 1734.3498829271405
+        y: -35.43029366369062
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        instruction: '你是一个电商客服助手。请从用户的问题中提取订单号或运单号（快递单号）。
+
+
+          规则：
+
+          1. 如果用户提到了订单号（HP开头），直接提取
+
+          2. 如果用户提到了运单号（SF/JD/DB/ZT/YT等字母开头），直接提取
+
+          3. 两者提取到任意一个即可
+
+          4. 都没有提到则输出"未知"
+
+          5. 只输出编号，不要解释
+
+
+          示例：
+
+          用户：我的订单HP20240901001物流到哪了？
+
+          输出：HP20240901001
+
+
+          用户：帮我查下SF1234567890123
+
+          输出：SF1234567890123
+
+
+          用户：ZT444333222111发的什么快递
+
+          输出：ZT444333222111
+
+          '
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 提取快递单号，如订单号或运单号
+          name: order_number
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器 2
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1790773251927'
+      position:
+        x: 2043.449561355958
+        y: -157.08458107092198
+      positionAbsolute:
+        x: 2043.449561355958
+        y: -157.08458107092198
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        answer: '抱歉，我没能完全理解您的问题，可能是我还在学习中。😊
+
+
+          您可以这样问我：
+
+          • 产品相关：「RTX5080 多少钱」「星耀X15 有货吗」
+
+          • 物流查询：「订单 HP20240901001 到哪了」
+
+          • 售后政策：「支持7天无理由退货吗」
+
+          • 活动优惠：「618 有什么活动」
+
+
+          如果您的问题比较复杂，也可以描述得更具体一些，我会尽力为您解答。如需人工客服，请告诉我「转人工」。
+
+          '
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 244
+      id: '1790779672607'
+      position:
+        x: 1286.187882140939
+        y: 494.932445422179
+      positionAbsolute:
+        x: 1286.187882140939
+        y: 494.932445422179
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: -1939.8721363664895
+      y: 318.77931458164755
+      zoom: 0.7348672671280428
+  rag_pipeline_variables: []

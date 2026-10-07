@@ -1,0 +1,44 @@
+{
+    "星耀X15手机": {
+        "stock": 128,
+        "warehouse": "深圳仓",
+        "ship_time": "48小时内发货",
+        "price": 3999,
+        "sku": "XY-X15-001"
+    },
+    "静语降噪耳机Pro2": {
+        "stock": 356,
+        "warehouse": "东莞仓",
+        "ship_time": "当天发货",
+        "price": 899,
+        "sku": "JY-PRO2-002"
+    },
+    "锐驰RTX5080显卡": {
+        "stock": 42,
+        "warehouse": "上海仓",
+        "ship_time": "72小时内发货",
+        "price": 7999,
+        "sku": "RC-RTX5080-003"
+    },
+    "轻享Pad Pro 12.9英寸": {
+        "stock": 0,
+        "warehouse": "成都仓",
+        "ship_time": "预计7天补货",
+        "price": 3299,
+        "sku": "QX-PADPRO-004"
+    },
+    "极速无线充电器120W": {
+        "stock": 520,
+        "warehouse": "广州仓",
+        "ship_time": "当天发货",
+        "price": 199,
+        "sku": "JS-120W-005"
+    },
+    "机械键盘K87": {
+        "stock": 89,
+        "warehouse": "武汉仓",
+        "ship_time": "48小时内发货",
+        "price": 349,
+        "sku": "JX-K87-006"
+    }
+}

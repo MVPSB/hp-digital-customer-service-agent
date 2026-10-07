@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  background: #fff;
+  padding: 30px;
+  width: 900px;
+}
+h1 {
+  text-align: center;
+  font-size: 22px;
+  color: #1F3A5F;
+  margin-bottom: 25px;
+}
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.box {
+  border: 2px solid #4A90D9;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-align: center;
+  background: #EBF3FC;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1F3A5F;
+  min-width: 280px;
+}
+.box-green {
+  border-color: #27AE60;
+  background: #E8F8EF;
+  color: #1E7E45;
+}
+.box-orange {
+  border-color: #E67E22;
+  background: #FDF2E9;
+  color: #B35C00;
+}
+.box-purple {
+  border-color: #8E44AD;
+  background: #F5EEF8;
+  color: #6C3483;
+}
+.box-gray {
+  border-color: #7F8C8D;
+  background: #F4F6F7;
+  color: #566573;
+}
+.arrow {
+  width: 2px;
+  height: 18px;
+  background: #4A90D9;
+  position: relative;
+}
+.arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -4px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #4A90D9;
+}
+.branches {
+  display: flex;
+  gap: 12px;
+  margin: 5px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.branch {
+  border: 1.5px solid #4A90D9;
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-align: center;
+  background: #EBF3FC;
+  font-size: 12px;
+  color: #1F3A5F;
+  min-width: 100px;
+}
+.branch-green { border-color: #27AE60; background: #E8F8EF; color: #1E7E45; }
+.branch-orange { border-color: #E67E22; background: #FDF2E9; color: #B35C00; }
+.branch-purple { border-color: #8E44AD; background: #F5EEF8; color: #6C3483; }
+.branch-gray { border-color: #7F8C8D; background: #F4F6F7; color: #566573; }
+.sub-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #566573;
+  margin-top: 4px;
+}
+.sub-box {
+  border: 1px dashed #95A5A6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: #fff;
+}
+.layer-label {
+  font-size: 11px;
+  color: #95A5A6;
+  margin-top: 2px;
+}
+.components {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+.comp {
+  text-align: center;
+  font-size: 12px;
+  color: #566573;
+}
+.comp-box {
+  border: 1.5px solid #3498DB;
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: #EBF5FB;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #1F3A5F;
+}
+</style>
+</head>
+<body>
+
+<h1>HP数码店智能客服 Agent — 系统架构图</h1>
+
+<div class="flow">
+  <div class="box">用户输入</div>
+  <div class="arrow"></div>
+  
+  <div class="box box-purple">问题分类 LLM（意图识别）</div>
+  <div class="layer-label">consulting / complaint / tech_support / chitchat / unknown</div>
+  <div class="arrow"></div>
+
+  <div class="branches">
+    <div class="branch branch-green">产品咨询<br><span class="layer-label">RAG + 库存MCP</span></div>
+    <div class="branch branch-green">物流咨询<br><span class="layer-label">单号提取 + 物流MCP</span></div>
+    <div class="branch branch-green">店铺政策<br><span class="layer-label">RAG</span></div>
+    <div class="branch branch-green">促销活动<br><span class="layer-label">RAG</span></div>
+    <div class="branch branch-orange">投诉处理<br><span class="layer-label">RAG + 安抚</span></div>
+    <div class="branch branch-orange">技术支持<br><span class="layer-label">Pure RAG</span></div>
+    <div class="branch branch-purple">闲聊<br><span class="layer-label">LLM</span></div>
+    <div class="branch branch-gray">兜底澄清<br><span class="layer-label">直接回复</span></div>
+  </div>
+  <div class="arrow"></div>
+
+  <div class="box">各场景回答 LLM（结合对话记忆）</div>
+  <div class="arrow"></div>
+
+  <div class="box box-green">统一输出回答</div>
+</div>
+
+<div class="components">
+  <div class="comp">
+    <div class="comp-box">编排引擎</div>
+    Dify Chatflow
+  </div>
+  <div class="comp">
+    <div class="comp-box">大语言模型</div>
+    DeepSeek V4 Flash
+  </div>
+  <div class="comp">
+    <div class="comp-box">向量嵌入</div>
+    BAAI/bge-large-zh-v1.5
+  </div>
+  <div class="comp">
+    <div class="comp-box">知识库分段</div>
+    父子分段
+  </div>
+  <div class="comp">
+    <div class="comp-box">工具协议</div>
+    MCP (端口8000/8001)
+  </div>
+  <div class="comp">
+    <div class="comp-box">评测框架</div>
+    RAGAS + LLM-as-Judge
+  </div>
+</div>
+
+</body>
+</html>
